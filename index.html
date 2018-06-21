@@ -1,0 +1,123 @@
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <title>Drum Man</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="display">
+        <div id = "background">
+            <div id = "man" >
+                <img src="./img/man.png" id="change">
+            </div>
+            <div id = "light">
+                <img src="./img/light.png">
+            </div>
+            <div id = "speaker_R">
+                <img src="./img/speaker_R.png" class="key" data-key="48">
+            </div>
+            <div id ="speaker_L" >
+                <img src="./img/speaker_L.png" class="key" data-key="65">
+            </div>
+            <div id="big_drum">
+                <img src="./img/big_drum.png" data-key="83" class="key">
+            </div>
+            <div id="cymbals_L">
+                <img src="./img/cymbals_L.png" data-key="68" class="key">
+            </div>
+            <div id="cymbals_R">
+                <img src="./img/cymbals_R.png" data-key="70" class="key">
+            </div>
+            <div id="guitar">
+                <img src="./img/guitar.png" data-key="72" class="key">  
+            </div>
+            <div id="mid_drum_L">
+                <img src="./img/mid_drum_L.png" data-key="71" class="key">
+            </div>
+            <div id="mid_drum_R">
+                <img src="./img/mid_drum_R.png" data-key="74" class="key">
+            </div>
+            <div id="small_drum_R">
+                <img src="./img/small_drum_R.png" data-key="75" class="key">
+            </div>
+            <div id="small_drum_L">
+                <img src="./img/small_drum_L.png" data-key="76" class="key">
+            </div>
+            
+        </div>
+        <div id="point">Point : 0</div>
+        <button onclick="replace()">다시하기</button>
+        
+    </div>
+    <audio data-key="48" src="sounds/boom.wav"></audio>
+    <audio data-key="65" src="sounds/boom.wav"></audio>
+    <audio data-key="83" src="sounds/kick.wav"></audio>
+    <audio data-key="68" src="sounds/hihat.wav"></audio>
+    <audio data-key="70" src="sounds/openhat.wav"></audio>
+    <audio data-key="71" src="sounds/boom.wav"></audio>
+    <audio data-key="72" src="sounds/guitar.mp3"></audio>
+    <audio data-key="74" src="sounds/snare.wav"></audio>
+    <audio data-key="75" src="sounds/tom.wav"></audio>
+    <audio data-key="76" src="sounds/tink.wav"></audio>
+    
+<script>
+    var point = 0;
+
+    function removeTransition(e) {
+        if (e.propertyName !== 'transform') return;
+        e.target.classList.remove('playing');
+    }
+
+    function playSound(e) {
+        const audio = document.querySelector(`audio[data-key="${e.path[0].dataset.key}"]`);
+        const key = document.querySelector(`img[data-key="${e.path[0].dataset.key}"]`);
+        key.classList.add('playing');
+        console.log(key);
+        
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        point++;
+        console.log(point);
+        document.getElementById('point').innerHTML = "Point :" + point;
+        man_move();
+    }
+
+    function playSound_key(e) {
+        console.log(e.keyCode);
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const key = document.querySelector(`img[data-key="${e.keyCode}"]`);
+        key.classList.add('playing');
+        
+        console.log(key.classList);
+        if (!audio) return;
+        audio.currentTime = 0;
+        audio.play();
+        point++;
+        console.log(point);
+        document.getElementById('point').innerHTML = "Point : " + point;
+        man_move();
+    }
+
+    const keys = Array.from(document.querySelectorAll('.key'));
+    keys.forEach(key => key.addEventListener('click', playSound));
+    window.addEventListener('keydown', playSound_key);
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    
+    function change(){
+        document.getElementById('change').src = "./img/man.gif";
+        document.getElementById('man').style.marginLeft = "390px";
+    }
+    function man_move() {
+        if(point >= 50){
+            change();
+        }
+        else return;
+    }
+    function replace(){
+        window.location.reload();
+    }
+</script>
+</body>
+
+</html>
