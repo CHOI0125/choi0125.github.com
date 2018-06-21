@@ -1,0 +1,122 @@
+*{
+  box-sizing: border-box;
+}
+html{
+    background-color: #000;
+}
+#light{
+    z-index: 3;
+    position: absolute;
+    margin: 0 auto;
+    opacity: 0.5;
+}
+#background{
+    width: 1055px;
+    height: 703px;
+    background-color: #07526d;
+    margin: 0 auto;
+    position: relative; /*부모의 요소는 기본값ㄴㄴ*/
+}
+.key{
+    transition: transform .07s ease;
+}
+#display{
+    position: center; /* 가장큰걸로 센터를 잡아버림*/
+}
+#man{
+    z-index: 2;
+    margin-top: 282px;
+    margin-left: 400px;
+    position: absolute;
+    display: inline-block;
+}
+#speaker_R{
+    z-index: 3;
+    margin-left: 750px;
+    position: absolute;
+    display: inline-block;
+    margin-top: 374px;
+    transition: transform .07s ease;
+}
+#speaker_L{
+    z-index: 4;
+    margin-top: 374px;
+    margin-left: 210px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+    
+}
+#big_drum{
+    z-index: 20;
+    margin-top: 450px;
+    margin-left: 448px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+}
+#cymbals_L{
+    z-index: 5;
+    margin-top: 334px;
+    margin-left: 300px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+}
+#cymbals_R{
+    z-index: 6;
+    margin-top: 334px;
+    margin-left: 612px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+}
+#guitar{
+    z-index: 5;
+    margin-top: 403px;
+    margin-left: 700px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+}
+#mid_drum_L{
+    z-index: 10;
+    margin-top: 443px;
+    margin-left: 360px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+}
+#mid_drum_R{
+    z-index: 9;
+    margin-top: 443px;
+    margin-left: 570px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+}
+#small_drum_R{
+    z-index: 8;
+    margin-top: 383px;
+    margin-left: 550px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+}
+#small_drum_L{
+    z-index: 7;
+    margin-top: 383px;
+    margin-left: 430px;
+    position: absolute;
+    display: inline-block;
+    transition: transform .07s ease;
+}
+.key{
+    transition: transform .07s ease;
+}
+.playing {
+  transform: scale(1.1);
+}
+#point{
+    color: #fff;
+}
